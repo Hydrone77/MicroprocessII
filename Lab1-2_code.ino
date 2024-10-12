@@ -1,3 +1,8 @@
+// EECEE 5250 Lab 1
+// Winflash Hwang
+// 10/10/2024
+
+
 #include <Keypad.h>
 
 int latchPin = 28; // RCLK
