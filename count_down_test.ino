@@ -1,3 +1,7 @@
+// EECEE 5250 Lab 1
+// Winflash Hwang
+// 10/02/2024
+
 // Define pin connections
 int latchPin = 28;  // RCLK
 int clockPin = 22; // SRCLK
