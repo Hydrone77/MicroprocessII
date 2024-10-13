@@ -1,3 +1,7 @@
+// EECEE 5250 Lab 1
+// Winflash Hwang
+// 10/08/2024
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
