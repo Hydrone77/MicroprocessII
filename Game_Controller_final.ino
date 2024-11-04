@@ -28,7 +28,7 @@ int buzzPin = 13;//Active Buzzer
 
 void setup() {
   Serial.begin(9600) ;
-
+  //setting up the connection
   mySensor.setWire(&Wire);
   mySensor.beginAccel();
   mySensor.beginGyro();
@@ -53,7 +53,7 @@ void loop() {
   // converts the analog value to commands
   // reset commands
   command = COMMAND_NO;
-  
+  // define the mySensor.gyro for angular speed
   float x_gy = mySensor.gyroX();
   float y_gy = mySensor.gyroY();
   float z_gy = mySensor.gyroZ();
@@ -75,12 +75,12 @@ void loop() {
   else if (yValue > DOWN_THRESHOLD || x_gy < -80.00 ){
     command = COMMAND_DOWN;
    }
-  if (abs(x_accel) > 2.0 || abs(y_accel) > 2.0 || abs(z_accel) > 2.0) { 
+  if (abs(x_accel) > 2.0 || abs(y_accel) > 2.0 || abs(z_accel) > 2.0) { //check "shaking," with angular acceleration.
    command = DOUBLE;
    }
   
   // NOTE: AT A TIME, THERE MAY BE NO COMMAND, ONE COMMAND OR TWO COMMANDS
-  Serial.write(command);
+  Serial.write(command);//This will eventually send to the snake.py
   delay(200);
 
  if (Serial.available() > 0) { 
