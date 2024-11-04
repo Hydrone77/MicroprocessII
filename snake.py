@@ -10,7 +10,7 @@ import time
 import random
 import serial
 
-ser = serial.Serial('COM5', 9600, timeout=1)  
+ser = serial.Serial('COM5', 9600, timeout=1) #This serial function will communicate with Game_Controller_final.ino from COM5 usb port.
 time.sleep(2)
 
 delay = 0.1
@@ -108,17 +108,17 @@ wn.onkey(go_right, "d")
 while True:
     
     if ser.in_waiting > 0:
-        command = ser.read().decode('utf-8')
-        if command == '\x01':
+        command = ser.read().decode('utf-8')# receving command hexadecimal value from arduino code.
+        if command == '\x01':   # COMMAND_LEFT for arduino
           go_left()
-        elif command == '\x02':
+        elif command == '\x02': # COMMAND_RIGHT for arduino
           go_right()
-        elif command == '\x04':
+        elif command == '\x04': # COMMAND_UP fo arduino
           go_up()
-        elif command == '\x08':
+        elif command == '\x08': # COMMAND_DOWN fo arduino
           go_down()
-        elif command == '\x07':
-          change_food_color1()  
+        elif command == '\x07': # command value for shaking
+          change_food_color1()  #changing the color of snake food as gold
     wn.update()
     
 
@@ -147,7 +147,8 @@ while True:
 
     # Check for a collision with the food
     if head.distance(food) < 20:
-
+        
+        #Sending a message to arduino, when snake eats food, so arduino activate buzzer 
         ser.write(b"flag=eat\n")    
         # Move the food to a random spot
         x = random.randint(-290, 290)
@@ -166,7 +167,7 @@ while True:
         delay -= 0.001
 
         # Increase the score
-        if food.color()[0] == "gold": 
+        if food.color()[0] == "gold": # make sure the statement is for gold snake food to get 20 score 
             score += 20
         else:
             score += 10
@@ -176,7 +177,7 @@ while True:
         
         pen.clear()
         pen.write("Score: {}  High Score: {}  P/A: {}".format(score, high_score, ppa), align="center", font=("Courier", 24, "normal")) 
-        change_food_color2()
+        change_food_color2() # reset the color of snake food into "red" 
          
     # Move the end segments first in reverse order
     for index in range(len(segments)-1, 0, -1):
