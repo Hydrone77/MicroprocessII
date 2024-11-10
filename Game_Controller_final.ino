@@ -1,5 +1,5 @@
 
-#include <Wire.h>                // EECE5520 031V
+#include <Wire.h>                // EECE5520 031V Lab2
 #include <MPU9250_asukiaaa.h>    // Winflash Hwang
                                  // 11/02/2024
 MPU9250_asukiaaa mySensor;
