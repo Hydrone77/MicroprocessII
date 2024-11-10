@@ -1,7 +1,7 @@
 
-#include <Wire.h>
-#include <MPU9250_asukiaaa.h>
-
+#include <Wire.h>                // EECE5520 031V
+#include <MPU9250_asukiaaa.h>    // Winflash Hwang
+                                 // 11/02/2024
 MPU9250_asukiaaa mySensor;
 
 #define VRX_PIN  A0 // Arduino pin connected to VRX pin
