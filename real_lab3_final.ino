@@ -247,7 +247,7 @@ void loop() {
   if (isTimeRunning) {
     displayTime();
   }
-
+  //This two 100ms time interrupts work for preventing rapid changes 
   if (flag100ms == 1) { // Check if the 100ms flag is set
     flag100ms = 0; // Clear the flag
     TI();
